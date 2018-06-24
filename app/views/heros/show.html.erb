@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hero.name %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @hero.power %>
+</p>
+
+<p>
+  <strong>Universe:</strong>
+  <%= @hero.universe_id %>
+</p>
+
+<%= link_to 'Edit', edit_universe_hero_path(@hero) %> |
+<%= link_to 'Back', universe_heros_path %>
