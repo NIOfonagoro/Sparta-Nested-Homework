@@ -10,6 +10,32 @@
   <%= @universe.movies %>
 </p>
 
-<%= link_to 'Edit', edit_universe_path(@universe) %> |
-<%= link_to 'Back', universes_path %> |
-<%= link_to "New Hero", new_universe_hero_path(@universe) %>
+<div>
+  <%= link_to 'Edit', edit_universe_path(@universe) %> |
+  <%= link_to 'Back', universes_path(@universe) %> |
+  <%= link_to "New Hero", new_universe_hero_path(@universe) %>
+
+</div>
+
+<div class="">
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Power</th>
+      <th>Universe ID</th>
+    </thead>
+    <tbody>
+      <% @heros.each do |hero| %>
+      <% if(hero.universe.id == @universe.id) %>
+      <tr>
+        <td><%= hero.name %></td>
+        <td><%= hero.power %></td>
+        <td><%= hero.universe_id %></td>
+        <td><%= link_to "See More", universe_hero_path(@universe) %></td>
+        <td><%= link_to "Destroy", universe_hero_url(@universe), method: :delete %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

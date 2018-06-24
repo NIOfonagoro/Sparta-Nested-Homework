@@ -4,6 +4,7 @@ class HerosController < ApplicationController
   # GET /heros
   # GET /heros.json
   def index
+    @universe = Universe.find(params[:universe_id])
     @heros = Hero.all
   end
 
@@ -33,7 +34,7 @@ class HerosController < ApplicationController
 
     respond_to do |format|
       if @hero.save
-        format.html { redirect_to universes_path(@universe), notice: 'Hero was successfully created.' }
+        format.html { redirect_to universe_heros_path(@universe, @hero), notice: 'Hero was successfully created.' }
         format.json { render :show, status: :created, location: @hero }
       else
         format.html { render :new }
@@ -46,8 +47,9 @@ class HerosController < ApplicationController
   # PATCH/PUT /heros/1.json
   def update
     respond_to do |format|
+      @universe = Universe.find(params[:universe_id])
       if @hero.update(hero_params)
-        format.html { redirect_to @hero, notice: 'Hero was successfully updated.' }
+        format.html { redirect_to universe_heros_path, notice: 'Hero was successfully updated.' }
         format.json { render :show, status: :ok, location: @hero }
       else
         format.html { render :edit }

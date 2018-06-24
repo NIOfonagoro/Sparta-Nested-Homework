@@ -18,9 +18,9 @@
         <td><%= hero.name %></td>
         <td><%= hero.power %></td>
         <td><%= hero.universe_id %></td>
-        <td><%= link_to 'Show', hero %></td>
-        <td><%= link_to 'Edit', edit_hero_path(hero) %></td>
-        <td><%= link_to 'Destroy', hero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', universe_hero_path(@universe, hero)%></td>
+        <td><%= link_to 'Edit', edit_universe_hero_path(@universe, hero) %></td>
+        <td><%= link_to 'Destroy', universe_heros_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
